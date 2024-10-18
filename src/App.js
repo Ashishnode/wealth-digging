@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Coin from './components/Coin'; 
 import './App.css'
 import axios from 'axios'
+import Menu from './components/Menu'
+
 
 const App = () => {
   const [coins, setCoins] = useState([]);
@@ -22,7 +24,8 @@ const App = () => {
   }, []); 
 
   return (
-    <div>
+    <div className='coin'>
+      <Menu />
       {coins.map((coin) => ( 
         <Coin key={coin.id} name={coin.name} symbol={coin.symbol} price={coin.current_price} ImgSrc={coin.image}/>
       ))}
@@ -31,3 +34,6 @@ const App = () => {
 }
 
 export default App;
+
+
+
