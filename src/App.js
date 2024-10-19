@@ -3,20 +3,24 @@ import Coin from './components/Coin';
 import './App.css'
 import axios from 'axios'
 import Menu from './components/Menu'
-
+import Loader from './components/Loader';
+import Footer from './components/Footer';
 
 const App = () => {
   const [coins, setCoins] = useState([]);
+  const [loading, setLoading] =useState(true);
 
   useEffect(() => { 
     const fetchAllCoins = async () => { 
       try {
-        const { data } = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&per_page=20"); // get the data
+        const { data } = 
+        await 
+        axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&per_page=1020"); 
         setCoins(data); 
-        console.log(coins);
+        setLoading(false);
         
       } catch (error) {
-        console.error('Error fetching coins:', error); 
+        console.error('unable to connect:', error); 
       }
     };
 
@@ -26,9 +30,16 @@ const App = () => {
   return (
     <div className='coin'>
       <Menu />
-      {coins.map((coin) => ( 
-        <Coin key={coin.id} name={coin.name} symbol={coin.symbol} price={coin.current_price} ImgSrc={coin.image}/>
-      ))}
+      {
+        loading ? <Loader /> : coins.map((coin) => ( 
+          <Coin key={coin.id} 
+          name={coin.name} 
+          symbol={coin.symbol} 
+          price={coin.current_price} 
+          ImgSrc={coin.image}/>
+        ))
+      }
+      <Footer />
     </div>
   );
 }

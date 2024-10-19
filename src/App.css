@@ -9,11 +9,13 @@ body {
 }
 
 .coinWrapper { 
-  border: 1px solid #ccc; 
-  background-color: rgb(231, 231, 231);
+  border: 1px solid #ececec; 
+  background-color: rgb(245, 245, 245);
   width: 12rem;
   height: 13rem;
+  text-transform: uppercase;
   text-align: center;
+  font-size: 0.73rem;
   margin: 1rem;
   display: flex;
   border-radius: 10px; 
@@ -65,3 +67,64 @@ body {
     font-size: 12px; 
   }
 }
+
+.loaderBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+/* Loader */
+.loader {
+  border: 8px solid transparent; /* Transparent border for space */
+  border-top: 8px solid red;    /* Start with red */
+  border-radius: 50%;
+  width: 15rem;                  /* Size of the loader */
+  height: 15rem;                 /* Size of the loader */
+  animation: spin 1s linear infinite, rainbow 0.9s linear infinite; 
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    border-top-color: red;
+  }
+  16% {
+    border-top-color: orange;
+  }
+  33% {
+    border-top-color: yellow;
+  }
+  50% {
+    border-top-color: green;
+  }
+  66% {
+    border-top-color: blue;
+  }
+  83% {
+    border-top-color: violet;
+  }
+  100% {
+    border-top-color: red;
+  }
+}
+
+.footor{
+  display: flex;
+  align-items: center;
+  background-color: rgb(116, 101, 101);
+  justify-content: space-evenly;
+  width: 100%;
+  height:9vh;
+  
+}
+
