@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Coin from './Coin';
 import '../App.css'
 import axios from 'axios'
+import { Server } from '../api/Api.jsx';
 import Menu from "../components/Menu"
 import Loader from '../components/Loader'
 import Footer from "../components/Footer"
@@ -14,9 +15,9 @@ const Home = () => {
   useEffect(() => { 
     const fetchAllCoins = async () => { 
       try {
-        const { data } = 
-        await 
-        axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&per_page=1020"); 
+        const { data } = await 
+        axios.get(`${Server}/coins/markets?vs_currency=inr&per_page=20`); 
+
         setCoins(data); 
         setLoading(false);
         
