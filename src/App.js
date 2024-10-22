@@ -1,20 +1,3 @@
-// import React from 'react'
-// import { Routes, Route } from 'react-router-dom'
-// import HomeScreen from './screen/Home'
-
-// const App = () => {
-//   return (
-//       <Routes>
-//       <Route path='/' element={<HomeScreen />} />
-//         <Route path='/coins' element={'Coins'} />
-//         <Route path='/exchang' element={'Exchange'} />
-//       </Routes>
-//   )
-// }
-
-// export default App
-
-
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomeScreen from './screen/Home';
@@ -26,8 +9,8 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<HomeScreen />} />
-      <Route path="/coins" element={<Coin />} />
-      <Route path="/exchange" element={<Exchange />} />
+      <Route path="/coin" element={<Coin />} />
+      <Route path="/exchanges" element={<Exchange />} />
     </Routes>
   );
 };
