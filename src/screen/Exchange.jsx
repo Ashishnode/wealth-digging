@@ -1,38 +1,42 @@
 import React, { useState,useEffect } from 'react'
 import axios from 'axios'
 import { Server } from '../api/Api'
-import { HStack, VStack } from '@chakra-ui/react';
+import { HStack } from '@chakra-ui/react';
 import ExchangeCard from '../components/ExchangeCard';
-import Loader from '../components/Loader';
 import Menu from '../components/Menu'
-import { logDOM } from '@testing-library/react';
+import Loader from '../components/Loader'
+import ErrorModules from '../components/ErrorModules';
 
-const Exchange = ({current}) => {
+const Exchange = () => {
   const [exchanges, setExchanges] = useState([]);
-  const [loading, setLoading] =useState(true);
+  const [loading,setLoading] =useState(true)
+  const [error,setError] =useState(false)
+
 
  useEffect(()=>{
+
   const fetchAllExchanges = async()=>{
     try {   
-      const {data} = await axios.get(`${Server}/exchanges?per_page=250`)
+      const {data} = await axios.get(`${Server}/exchanges?per_page=100`)
       setExchanges(data);
-      console.log(data);
-      
+      setLoading(false);
     }
     catch{
-      console.log("somethings error ashish");
-      
+      setError(true);
+      setError(true);
+      setLoading(false);
     }
   }
   fetchAllExchanges()
+ },[error])
 
- },[])
+ if(error)return <ErrorModules />
 
   return (
     <>
       <Menu />
-      <HStack wrap={'wrap'} justifyContent={'center'}>
-        { 
+      <HStack wrap={'wrap'} justifyContent={'center '}>
+       {loading ? <Loader/> :
          exchanges.map((exchange) => ( 
           <ExchangeCard key={exchange.id} 
           name={exchange.name} 
