@@ -7,7 +7,7 @@ import Menu from '../components/Menu'
 import Loader from '../components/Loader'
 import ErrorModules from '../components/ErrorModules';
 
-const Exchange = ({current}) => {
+const Exchange = () => {
   const [exchanges, setExchanges] = useState([]);
   const [loading,setLoading] =useState(true)
   const [error,setError] =useState(false)
@@ -17,10 +17,9 @@ const Exchange = ({current}) => {
 
   const fetchAllExchanges = async()=>{
     try {   
-      const {data} = await axios.get(`${Server}/echanges?per_page=100`)
+      const {data} = await axios.get(`${Server}/exchanges?per_page=100`)
       setExchanges(data);
       setLoading(false);
-      
     }
     catch{
       setError(true);

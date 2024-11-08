@@ -16,8 +16,7 @@ const Home = () => {
     const fetchAllCoins = async () => { 
       try {
         const { data } = await 
-        axios.get(`${Server}/coins/markets?vs_currency=inr&per_page=20`); 
-
+        axios.get(`${Server}/coins/markets?vs_currency=inr&per_page=800`); 
         setCoins(data); 
         setLoading(false);
         
